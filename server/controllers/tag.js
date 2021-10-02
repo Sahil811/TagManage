@@ -9,6 +9,6 @@
  import { ModelResolver } from './resolvers';
  
  export default {
-    add: (req, res) => ModelResolver(req, res, TagModel.Add),
+   add: (req, res) => ModelResolver(req, res, TagModel.Add),
  };
  

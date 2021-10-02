@@ -1,6 +1,4 @@
-import {
-	TagControllers,
-} from '../controllers';
+import TagControllers from '../controllers/tag';
 
 const prefix = '/api/tag/';
 /**

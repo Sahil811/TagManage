@@ -14,26 +14,22 @@ import {
  */
 
 export default ({
-	id,
-	businessRef,
+	userRef,
 	name,
-	note = "",
 }) => new Promise(async (resolve, reject) => {
 	try {
-		if (!name || !businessRef) {
-			return reject(ResponseUtility.GENERIC_ERR({ message: `Missing proprty ${!businessRef ? 'businessRef' : 'name'}.` }));
+		if (!userRef || !name) {
+			return reject(ResponseUtility.GENERIC_ERR({ message: `Missing proprty ${!userRef? '	userRef' : 'name'}.` }));
 		}
 
-		const music = new MusicModel({
+		const tag = new TagModel({
 			userRef: id,
-			businessRef,
             name,
-            note
 		});
-		await music.save();
+		await tag.save();
 
-		return resolve(ResponseUtility.SUCCESS({ data: music }));
+		return res.sendStatus(200).json({ data: tag });
 	} catch (err) {
-		return reject(ResponseUtility.GENERIC_ERR({ message: err.message, error: err }));
+		return res.sendStatus(404).json({ message: err.message, error: err });
 	}
 });

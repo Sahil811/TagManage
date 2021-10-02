@@ -11,6 +11,10 @@ import passport from 'passport';
 import cors from 'cors';
 import ActivateRoutes from './routes';
 
+const dotenv = require('dotenv');
+const path = require('path')
+dotenv.config({path: path.resolve('.env')})
+
 const app = express();
 // enable cors support
 app.use(cors({

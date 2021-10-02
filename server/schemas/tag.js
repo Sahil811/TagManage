@@ -8,9 +8,8 @@
  import database from '../db';
  
  const Tag = new Schema({
-     bookingRef: { type: Schema.Types.ObjectId },
-     promoRef: { type: Schema.Types.ObjectId, required: true },
      userRef: { type: Schema.Types.ObjectId, required: true },
+     name: { type: Schema.Types.ObjectId, required: true },
      deleted: { type: Boolean, default: false },
      deletedOn: Date,
  }, {
