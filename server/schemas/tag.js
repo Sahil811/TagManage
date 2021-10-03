@@ -9,7 +9,7 @@
  
  const Tag = new Schema({
      userRef: { type: Schema.Types.ObjectId, required: true },
-     name: { type: Schema.Types.ObjectId, required: true },
+     name: { type: String },
      deleted: { type: Boolean, default: false },
      deletedOn: Date,
  }, {

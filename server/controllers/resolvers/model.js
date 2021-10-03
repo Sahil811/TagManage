@@ -13,7 +13,7 @@
 */
 export default (req, res, modelPromise) => {
 	const { body } = req;
-	modelPromise(body).then(
+	modelPromise(body, res).then(
 		success => res.status(200).send(success),
 		error => res.status(200).send(error),
 	);

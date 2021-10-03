@@ -1,7 +1,5 @@
 /* eslint-disable import/named */
-import {
-	TagModel,
-} from '../../schemas';
+import TagModel from '../../schemas/tag';
 
 /**
  * @description service model function to handle the creation of a Tag.
@@ -14,12 +12,12 @@ import {
  */
 
 export default ({
-	userRef,
+	id,
 	name,
-}) => new Promise(async (resolve, reject) => {
+}, res) => new Promise(async (resolve, reject) => {
 	try {
-		if (!userRef || !name) {
-			return reject(ResponseUtility.GENERIC_ERR({ message: `Missing proprty ${!userRef? '	userRef' : 'name'}.` }));
+		if (!id || !name) {
+			return reject(res.status(404).json({ message: `Missing proprty ${!id ? 'userRef' : 'name'}.` }));
 		}
 
 		const tag = new TagModel({
@@ -28,8 +26,8 @@ export default ({
 		});
 		await tag.save();
 
-		return res.sendStatus(200).json({ data: tag });
+		return resolve(res.status(200).json({ data: tag }));
 	} catch (err) {
-		return res.sendStatus(404).json({ message: err.message, error: err });
+		return reject(res.status(404).json({ message: err.message, error: err }));
 	}
 });

@@ -10,4 +10,6 @@ const prefix = '/api/tag/';
 
 export default (app) => {
 	app.post(`${prefix}add`, TagControllers.add);
+	app.get(`${prefix}list`, TagControllers.list);
+	app.delete(`${prefix}list`, TagControllers.list);
 };
